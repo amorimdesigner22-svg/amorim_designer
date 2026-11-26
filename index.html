@@ -2336,6 +2336,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 (function(){
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const desktop = matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1001px)');
   const ios = /\bOS (\d+)[_.]/.exec(navigator.userAgent);
   let controller = null;
 
@@ -2346,13 +2347,13 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
   function configure(){
     controller?.destroy();
     controller = null;
-    if (root.classList.contains('site-loading') || reduced.matches || typeof window.Lenis !== 'function') return;
+    if (root.classList.contains('site-loading') || reduced.matches || !desktop.matches || typeof window.Lenis !== 'function') return;
 
     controller = new window.Lenis({
       autoRaf:true,
       smoothWheel:true,
       lerp:.085,
-      syncTouch:!ios || Number(ios[1]) >= 16,
+      syncTouch:false,
       syncTouchLerp:.09,
       touchInertiaExponent:1.42,
       wheelMultiplier:1,
@@ -2407,6 +2408,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
   });
 
   reduced.addEventListener('change',configure);
+  desktop.addEventListener('change',configure);
   if (root.classList.contains('site-loading')) {
     const loader = new MutationObserver(() => {
       if (root.classList.contains('site-loading')) return;
