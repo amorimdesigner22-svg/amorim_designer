@@ -499,7 +499,7 @@ header{grid-template-columns:1fr auto;height:58px;padding:0 7px}
   z-index:24;
   pointer-events:none;
 }
-.project-cursor span{
+.hover-label{
   display:block;
   padding:7px 14px;
   border:1px solid var(--or);
@@ -520,7 +520,25 @@ header{grid-template-columns:1fr auto;height:58px;padding:0 7px}
   .project-carousel{margin-top:20px}
   .pj{border-radius:20px}
   .project-preview{border-radius:14px}
-  .more{margin-top:20px}
+  .more{display:grid;grid-template-columns:1fr;align-items:stretch;margin-top:20px}
+  .more > a{min-width:0;min-height:64px;text-align:center}
+  .more > .project-instagram{
+    padding-inline:30px;
+    font-size:clamp(14px,4vw,16px);
+  }
+  .more > .project-instagram svg{right:10px}
+  .more > .bx{
+    --s:clamp(38px,7vw,46px);
+    justify-content:center;
+    padding-inline:calc(var(--s) + var(--p) + 6px);
+    white-space:normal;
+  }
+  .more > .bx i{
+    position:absolute;
+    top:50%;
+    right:var(--p);
+    transform:translateY(-50%);
+  }
 }
 @media(prefers-reduced-motion:reduce){
   .intro .hero{position:relative;top:auto}
@@ -792,6 +810,7 @@ html.site-loading:not(.site-revealing){overflow:hidden}
   transform:none;
   transition-delay:0s;
 }
+[data-timeline] .process-panel:not(.is-active) .process-copy{visibility:hidden}
 .process-copy h3{
   font-size:clamp(24px,3.4vw,43px);
   line-height:1.06;
@@ -807,15 +826,15 @@ html.site-loading:not(.site-revealing){overflow:hidden}
 .process-image{
   width:100%;
   max-width:510px;
-  aspect-ratio:3/2;
+  aspect-ratio:5/4;
   justify-self:end;
   border-radius:clamp(12px,2vw,22px);
-  background:#3a150b var(--process-art) left top / 200% 200% no-repeat;
+  background:#3a150b var(--process-art) 7.142857% top / 240% 200% no-repeat;
   box-shadow:0 16px 42px rgba(16,4,0,.35),inset 0 0 0 1px rgba(255,220,195,.24);
 }
-.process-panel:nth-child(2) .process-image{background-position:right top}
-.process-panel:nth-child(3) .process-image{background-position:left bottom}
-.process-panel:nth-child(4) .process-image{background-position:right bottom}
+.process-panel:nth-child(2) .process-image{background-position:92.857143% top}
+.process-panel:nth-child(3) .process-image{background-position:7.142857% bottom}
+.process-panel:nth-child(4) .process-image{background-position:92.857143% bottom}
 @media(max-width:700px){
   .process-stage{padding:94px 0 45px}
   .process-stage h2{font-size:clamp(27px,7vw,38px)}
@@ -842,6 +861,12 @@ html.site-loading:not(.site-revealing){overflow:hidden}
   .process-image{justify-self:start;max-width:440px}
 }
 
+@media(min-width:701px) and (max-height:500px){
+  .process-stage{padding-bottom:10px}
+  .process-inner{padding-block:15px}
+  .process-image{max-width:min(510px,calc((100svh - 112px) * 1.25))}
+}
+
 /* Contato flutuante */
 .fl{
   position:fixed;
@@ -861,6 +886,25 @@ html.site-loading:not(.site-revealing){overflow:hidden}
   transition:background .2s,transform .2s;
 }
 .fl svg{width:26px;height:26px;fill:currentColor}
+.fl-tooltip{
+  position:absolute;
+  top:50%;
+  right:calc(100% + 13px);
+  white-space:nowrap;
+  pointer-events:none;
+  transform:translate(4px,-50%) scale(.84);
+  transform-origin:right center;
+}
+.fl:focus-visible .fl-tooltip{
+  opacity:1;
+  transform:translateY(-50%) scale(1);
+}
+@media(hover:hover) and (pointer:fine){
+  .fl:hover .fl-tooltip{
+    opacity:1;
+    transform:translateY(-50%) scale(1);
+  }
+}
 .fl::before{
   content:"";
   position:absolute;
@@ -1066,28 +1110,28 @@ html.site-loading:not(.site-revealing){overflow:hidden}
           <article class="process-panel" id="process-step-1">
             <div class="process-copy">
               <h3>Diagnóstico</h3>
-              <p>Entendo seu negócio, seu público e o que o site precisa gerar.</p>
+              <p>Entendo seu negócio, seu público e seus objetivos. Com isso, defino o que o site precisa comunicar e qual ação ele deve incentivar.</p>
             </div>
             <div class="process-image" aria-hidden="true"></div>
           </article>
           <article class="process-panel" id="process-step-2">
             <div class="process-copy">
               <h3>Estratégia e copy</h3>
-              <p>Defino a mensagem e a estrutura que guiam o visitante até o contato.</p>
+              <p>Organizo as seções e escrevo os textos para mostrar seu diferencial, responder às dúvidas do público e conduzir o visitante ao contato.</p>
             </div>
             <div class="process-image" aria-hidden="true"></div>
           </article>
           <article class="process-panel" id="process-step-3">
             <div class="process-copy">
               <h3>Design e código</h3>
-              <p>Interface, interações e implementação com atenção a cada detalhe.</p>
+              <p>Transformo a estratégia em um site responsivo, com identidade visual, navegação intuitiva e atenção à velocidade de carregamento.</p>
             </div>
             <div class="process-image" aria-hidden="true"></div>
           </article>
           <article class="process-panel" id="process-step-4">
             <div class="process-copy">
               <h3>Entrega</h3>
-              <p>Revisão final, ajustes e publicação do seu projeto.</p>
+              <p>Reviso o site em diferentes telas, testo links e botões de contato e faço os ajustes finais antes de publicar.</p>
             </div>
             <div class="process-image" aria-hidden="true"></div>
           </article>
@@ -1134,7 +1178,7 @@ html.site-loading:not(.site-revealing){overflow:hidden}
 <nav><a href="https://wa.me/5568992147337">WhatsApp</a><a href="https://www.instagram.com/amorim.dsg/">Instagram</a><a href="https://www.behance.net/lucasamorim82">Behance</a><a href="mailto:amorimdesigner22@gmail.com">E-mail</a></nav>
 <a href="#topo">Voltar ao topo</a>
 </div></footer>
-<a class="fl" href="https://wa.me/5568992147337?text=Ol%C3%A1%2C%20Amorim.%20Gostaria%20de%20falar%20sobre%20um%20projeto" aria-label="Conversar no WhatsApp"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
+<a class="fl" href="https://wa.me/5568992147337?text=Ol%C3%A1%2C%20Amorim.%20Gostaria%20de%20falar%20sobre%20um%20projeto" aria-label="Conversar no WhatsApp"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z"/></svg><span class="hover-label fl-tooltip" aria-hidden="true">Vamos conversar</span></a>
 <script>
 (function(){var b=document.getElementById('bg'),m=document.getElementById('mn');
 function t(o){m.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Fechar menu':'Abrir menu')}
@@ -1155,7 +1199,7 @@ c.forEach(function(e){e.classList.add('pre')});
 var io=new IntersectionObserver(function(es){es.filter(function(x){return x.isIntersecting}).forEach(function(x,k){var e=x.target,d=k*140;io.unobserve(e);e.style.transitionDelay=d+'ms';e.classList.add('in');setTimeout(function(){e.classList.remove('pre','in');e.style.transitionDelay=''},900+d)})},{threshold:.25});
 c.forEach(function(e){io.observe(e)})})();
 </script>
-<div class="project-cursor" aria-hidden="true"><span>Ver projeto</span></div>
+<div class="project-cursor" aria-hidden="true"><span class="hover-label">Ver projeto</span></div>
 <script>
 /* A Hero alta precisa rolar até o fim antes de ficar fixa. */
 (function(){
