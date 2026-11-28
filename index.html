@@ -205,6 +205,38 @@ header .w{display:contents}
 .mn a:not(.bx):hover,.mn a.on{color:#fff}
 .mn a:not(.bx):hover::after,.mn a.on::after{transform:scaleX(1)}
 .hr{justify-self:end;display:flex;align-items:center;gap:10px}
+.language-switch{
+  display:inline-flex;
+  flex:none;
+  align-items:center;
+  gap:2px;
+  padding:3px;
+  border:1px solid rgba(246,155,98,.36);
+  border-radius:9px;
+  background:rgba(36,9,3,.68);
+}
+.language-switch[hidden]{display:none}
+.language-switch button{
+  width:32px;
+  height:32px;
+  padding:0;
+  border:0;
+  border-radius:5px;
+  background:transparent;
+  color:#f7dece;
+  font-family:inherit;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+.language-switch button:hover{background:rgba(255,246,236,.16)}
+.language-switch button[aria-pressed="true"]{background:#ffc69f;color:#391205}
+.language-switch button:focus-visible{outline:2px solid #fff3ea;outline-offset:1px}
+@media(max-width:360px){
+  header .hr{gap:7px}
+  header .logo{margin-left:6px}
+  header .logo img{height:20px}
+}
 .mcta{display:none}
 .bx{white-space:nowrap}
 .burger{display:none;position:relative;width:44px;height:44px;border:1.5px solid rgba(246,155,98,.45);border-radius:50%;background:transparent;cursor:pointer}
@@ -1796,7 +1828,10 @@ html.site-loading > body > header{visibility:hidden}
 <header><div class="w">
 <a class="logo" href="#topo" aria-label="Amorim, ir para o início"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwOSIgaGVpZ2h0PSIyMTMiIHZpZXdCb3g9IjAgMCAxMjA5IDIxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI4My4zNzUgMjEyLjkxMUgyMjcuMTA1TDU5LjgxODEgNTMuNTkwNFYwTDI4My4zNzUgMjEyLjkxMVoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8yNjhfMTcpIi8+CjxwYXRoIGQ9Ik0zNjIuNDU2IDIxMi45MTFIMzA2LjE4NkwxMzguOSA1My43MzVWMEwzNjIuNDU2IDIxMi45MTFaIiBmaWxsPSJ1cmwoI3BhaW50MV9saW5lYXJfMjY4XzE3KSIvPgo8cGF0aCBkPSJNNDA1LjAzOCAxNzAuMzI5SDUzMi43ODRWMjEyLjkxMUg0MDUuMDM4TDM2Mi40NTYgMTcwLjMyOVY0Mi41ODNINDA1LjAzOFYxNzAuMzI5WiIgZmlsbD0idXJsKCNwYWludDJfbGluZWFyXzI2OF8xNykiLz4KPHBhdGggZD0iTTY0NC42NjYgMjEyLjkxMUg2MDIuMDgzVjQyLjg0OTFINjQ0LjY2NlYyMTIuOTExWiIgZmlsbD0idXJsKCNwYWludDNfbGluZWFyXzI2OF8xNykiLz4KPHBhdGggZD0iTTgxNC45OTQgMjEyLjkxMUg3NzIuNDEyVjEyNy43NDZIODE0Ljk5NFYyMTIuOTExWiIgZmlsbD0idXJsKCNwYWludDRfbGluZWFyXzI2OF8xNykiLz4KPHBhdGggZD0iTTg4NC4yOTQgMjEyLjkxMUg4NDEuNzEyVjBIODg0LjI5NFYyMTIuOTExWiIgZmlsbD0idXJsKCNwYWludDVfbGluZWFyXzI2OF8xNykiLz4KPHBhdGggZD0iTTEwNTkuODggNDIuNTgzVjBIMTE0NS4wNUwxMjA4LjkyIDYzLjg3MzFWMjEyLjkxMUgxMTY2LjM0Vjg1LjE2NDVMMTEyMy43NiA0Mi41ODNIMTA1OS44OEwxMDgxLjE3IDYzLjg3MzFWMjEyLjkxMUgxMDM4LjU5Vjg1LjE2NDVMOTk2LjAxIDQyLjU4M0g5NTMuNDI3VjIxMi45MTFIOTEwLjg0NVYwSDEwMTcuM0wxMDU5Ljg4IDQyLjU4M1oiIGZpbGw9InVybCgjcGFpbnQ2X2xpbmVhcl8yNjhfMTcpIi8+CjxwYXRoIGQ9Ik00OC45MTk5IDQ2Ljg5MDRWMTM0LjgwOEgxMDEuODkzTDE0MC4xNjYgMTczLjA4MUg0OC45MTk5VjIxMC4xMjJIMFYwTDQ4LjkxOTkgNDYuODkwNFoiIGZpbGw9InVybCgjcGFpbnQ3X2xpbmVhcl8yNjhfMTcpIi8+CjxwYXRoIGQ9Ik01NzUuMzY3IDQyLjU4M1YxNzAuMzI5SDUzMi43ODRWNDIuNTgzSDQwNS4wMzhWMEg1MzIuNzg0TDU3NS4zNjcgNDIuNTgzWiIgZmlsbD0idXJsKCNwYWludDhfbGluZWFyXzI2OF8xNykiLz4KPHBhdGggZD0iTTgxNC43MjggNDIuODQ5MVY4NS40MzA3TDc3Mi40MTIgMTI3Ljc0Nkg2NDQuNjY2TDY4Ni45ODIgODUuNDMwN0g3NzIuNDEyVjQyLjg0OTFINjQ0LjY2NlYwSDc3Mi40MTJMODE0LjcyOCA0Mi44NDkxWiIgZmlsbD0idXJsKCNwYWludDlfbGluZWFyXzI2OF8xNykiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQyX2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQzX2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ0X2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ1X2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ2X2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ3X2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ4X2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ5X2xpbmVhcl8yNjhfMTciIHgxPSIwIiB5MT0iMCIgeDI9IjcyLjczODEiIHkyPSI0MTMuMDExIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGNjlCNjIiLz4KPHN0b3Agb2Zmc2V0PSIwLjUiIHN0b3AtY29sb3I9IiNEODM5MDIiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNDkwRTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPC9zdmc+Cg==" width="136" height="24" alt="Amorim"></a>
 <nav class="mn" id="mn" aria-label="Principal"><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#processo">Processo</a><a href="#sobre">Sobre</a><a href="#faq">Dúvidas</a><a class="bx compact mcta" href="https://wa.me/5568992147337?text=Ol%C3%A1%2C%20Amorim.%20Gostaria%20de%20falar%20sobre%20um%20projeto">Fazer orçamento<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a></nav>
-<div class="hr"><a class="bx compact hcta" href="https://wa.me/5568992147337?text=Ol%C3%A1%2C%20Amorim.%20Gostaria%20de%20falar%20sobre%20um%20projeto">Fazer orçamento<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><button class="burger" id="bg" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mn"><span></span><span></span></button></div>
+<div class="hr"><a class="bx compact hcta" href="https://wa.me/5568992147337?text=Ol%C3%A1%2C%20Amorim.%20Gostaria%20de%20falar%20sobre%20um%20projeto">Fazer orçamento<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></i></a><div class="language-switch" role="group" aria-label="Idioma do site" hidden>
+  <button type="button" data-language="pt-BR" lang="pt-BR" aria-label="Português" aria-pressed="true">PT</button>
+  <button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button>
+</div><button class="burger" id="bg" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mn"><span></span><span></span></button></div>
 </div></header>
 
 <main id="topo">
@@ -2128,8 +2163,204 @@ html.site-loading > body > header{visibility:hidden}
 </footer>
 <a class="fl" href="https://wa.me/5568992147337?text=Ol%C3%A1%2C%20Amorim.%20Gostaria%20de%20falar%20sobre%20um%20projeto" aria-label="Conversar no WhatsApp"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z"/></svg><span class="hover-label fl-tooltip" aria-hidden="true">Vamos conversar</span></a>
 <script>
+const siteText = (() => {
+  const english = new Map([
+    ["Amorim Designer – Web designer para negócios que querem vender", "Amorim Designer – Web design for businesses that want to grow sales"],
+    ["Sites e landing pages estratégicos que transmitem autoridade, geram confiança e trazem clientes. Mais de 80 projetos entregues.", "Strategic websites and landing pages that establish credibility, build trust, and win customers. More than 80 projects delivered."],
+    ["Carregando", "Loading"],
+    ["Carregando o site.", "Loading the site."],
+    ["Site carregado.", "The site has loaded."],
+    ["Amorim, ir para o início", "Amorim, go to the homepage"],
+    ["Principal", "Main navigation"],
+    ["Projetos", "Projects"],
+    ["Serviços", "Services"],
+    ["Processo", "Process"],
+    ["Sobre", "About"],
+    ["Dúvidas", "FAQ"],
+    ["Fazer orçamento", "Request a quote"],
+    ["Abrir menu", "Open menu"],
+    ["Fechar menu", "Close menu"],
+    ["Idioma do site", "Site language"],
+    ["Seu negócio merece um site que trabalha por você", "Your business deserves a website that works for you"],
+    ["enquanto você empreende.", "while you run your business."],
+    ["enquanto você atende.", "while you serve your customers."],
+    ["enquanto você faz seu negócio crescer.", "while you focus on growth."],
+    ["Crio sites e landing pages que transmitem autoridade, geram confiança e transformam visitantes em clientes.", "I build websites and landing pages that establish credibility, build trust, and turn visitors into customers."],
+    ["Fazer meu orçamento", "Get my quote"],
+    ["Ver projetos", "View projects"],
+    ["projetos entregues", "projects delivered"],
+    ["anos de experiência", "years of experience"],
+    ["Lucas Amorim, web designer", "Lucas Amorim, website designer"],
+    ["Designer e Web Designer", "Designer and Web Designer"],
+    ["Seu site pode estar custando clientes.", "Your website could be costing you customers."],
+    ["Parece menor do que você é", "It undersells your business"],
+    ["Um visual desatualizado faz o cliente duvidar da sua qualidade antes mesmo de falar com você.", "An outdated design can make potential customers question the quality of your work before they ever speak with you."],
+    ["Não conduz para a ação", "It leaves visitors without a next step"],
+    ["Sem hierarquia e botões claros, o visitante olha, admira e vai embora.", "Without a clear layout and calls to action, visitors may like what they see and still leave."],
+    ["Não sustenta seu preço", "It fails to show what your work is worth"],
+    ["Quando o site não comunica valor, a conversa com o cliente começa pelo desconto.", "When your site fails to communicate your value, customers start the conversation by asking for a discount."],
+    ["O que eu posso construir para o seu negócio", "What I can build for your business"],
+    ["Exemplos de landing pages desenvolvidas", "Examples of landing pages I designed"],
+    ["Páginas de venda e captura com copy e design pensados para converter em lançamentos e ofertas.", "Sales and lead generation pages with copy and design built to convert visitors during launches and promotions."],
+    ["Quero uma landing page", "I need a landing page"],
+    ["Site institucional em um notebook", "A company website shown on a laptop"],
+    ["Sites institucionais", "Company websites"],
+    ["Presença digital sólida, que posiciona sua empresa como referência no seu mercado.", "Build a strong online presence that positions your company as a trusted name in your industry."],
+    ["Quero um site institucional", "I need a company website"],
+    ["Exemplos de criativos para redes sociais", "Examples of social media graphics"],
+    ["Criativos para redes sociais", "Social media design"],
+    ["Criativos estratégicos que fortalecem sua presença digital, comunicam valor e destacam sua marca nas redes sociais.", "Strategic visuals that strengthen your online presence, show what you offer, and help your brand stand out on social media."],
+    ["Quero meus criativos", "I need social media graphics"],
+    ["Projetos que mostram o nível do que eu entrego", "Selected projects that show what I deliver"],
+    ["Primeira faixa de projetos", "First row of projects"],
+    ["Segunda faixa de projetos", "Second row of projects"],
+    ["O 1% que Decide, página de vendas de Raquel Couto", "O 1% que Decide, Raquel Couto’s sales page"],
+    ["Site institucional de Raquel Couto, com a abertura do Clube VOLK", "Raquel Couto’s company website featuring Clube VOLK"],
+    ["Abertura do site institucional de um escritório de advocacia", "Opening section of a law firm website"],
+    ["Abertura da página de vendas da imersão A Estratégia da Virada 2.0", "Opening section of the A Estratégia da Virada 2.0 workshop sales page"],
+    ["Abertura e primeiros benefícios da página Team Black, da Team Dantas", "Opening section and benefits of Team Dantas’s Team Black offer"],
+    ["Página de Vendas | Infoproduto Academia", "Sales page for a digital fitness product"],
+    ["Abertura da página de inscrição da Operação 190", "Opening section of the Operação 190 sign-up page"],
+    ["Vallence Estate, projeto conceitual de um site imobiliário", "Vallence Estate, a concept for a real estate website"],
+    ["Abertura do site institucional de Fagner Calegário", "Opening section of Fagner Calegário’s website"],
+    ["Abertura do site conceitual da Lumière Clinic", "Opening section of the Lumière Clinic website concept"],
+    ["Abertura do site da VOID Streetwear e apresentação da camiseta VOID Tee", "Opening section of the VOID Streetwear website and an introduction to the VOID Tee"],
+    ["Abertura e seções iniciais da página de vendas da FitNow", "Opening and early sections of the FitNow sales page"],
+    ["Página da Trinks para a GAC Academy exibida em um notebook com fundo laranja", "Trinks’s GAC Academy page displayed on a laptop against an orange background"],
+    ["Ver todos no Behance", "View all on Behance"],
+    ["Acompanhar no Instagram", "Follow me on Instagram"],
+    ["Um processo claro, do primeiro contato à publicação", "A clear process, from first contact to launch"],
+    ["Etapas do processo", "Project steps"],
+    ["Etapa 1: Diagnóstico", "Step 1: Discovery"],
+    ["Etapa 2: Configurações", "Step 2: Setup"],
+    ["Etapa 3: Estratégia", "Step 3: Strategy"],
+    ["Etapa 4: Design", "Step 4: Design"],
+    ["Etapa 5: Desenvolvimento", "Step 5: Development"],
+    ["Etapa 6: Entrega", "Step 6: Launch"],
+    ["Diagnóstico", "Discovery"],
+    ["Configurações", "Setup"],
+    ["Estratégia", "Strategy"],
+    ["Desenvolvimento", "Development"],
+    ["Entrega", "Launch"],
+    ["Analiso seu negócio, seu público e sua oferta. A partir disso, definimos quais informações o site precisa transmitir e qual ação o visitante deve tomar, como solicitar um orçamento.", "I review your business, audience, and offer. Together we decide what the site needs to communicate and what visitors should do next, such as requesting a quote."],
+    ["Preparo a base técnica do site, incluindo domínio, hospedagem e canais de contato. Resolver essas configurações no início reduz retrabalho e deixa o projeto pronto para a publicação.", "I set up the technical foundation, including your domain, hosting, and contact channels. Handling these essentials early reduces rework and gets the project ready for launch."],
+    ["Organizo as páginas conforme as dúvidas e buscas do seu público. Escrevo títulos, textos e chamadas para ação que explicam sua oferta e facilitam o caminho até o contato.", "I structure the pages around what your audience asks and searches for. I write headlines, copy, and calls to action that explain your offer and make it easy to get in touch."],
+    ["Crio o visual a partir da identidade da sua marca. Defino a hierarquia das informações e o destaque dos botões para facilitar a leitura e a navegação em diferentes telas.", "I design around your brand identity. I organize the information and highlight key buttons so the site is easy to read and navigate on different screens."],
+    ["Transformo o layout em um site responsivo, com atenção ao carregamento e à acessibilidade. Cuido do SEO técnico na estrutura das páginas, nas imagens e nos links.", "I turn the design into a responsive website with attention to load times and accessibility. I take care of technical SEO across the page structure, images, and links."],
+    ["Testo o site em diferentes telas, reviso links e botões de contato e publico a versão final. Na entrega, oriento você a usar o site e manter as informações atualizadas.", "I test the site on different screen sizes, check links and contact buttons, and publish the final version. At handoff, I show you how to use the site and keep its content up to date."],
+    ["Quem está por trás do projeto", "Meet the designer behind your project"],
+    ["Sou Lucas Amorim, designer e web designer. Crio sites institucionais e landing pages para quem precisa apresentar seus serviços com clareza e mostrar o que diferencia seu negócio.", "I’m Lucas Amorim, a designer and web designer. I build company websites and landing pages for businesses that want to explain their services clearly and show what sets them apart."],
+    ["Cuido da estratégia, dos textos, do design e da implementação. Para mim, um bom site deixa claro o que você oferece e facilita o próximo passo de quem quer falar com você.", "I handle strategy, copy, design, and development. A good website makes your offer clear and makes it easy for interested visitors to take the next step."],
+    ["Mais de 80", "More than 80"],
+    ["projetos desenvolvidos", "projects completed"],
+    ["Mais de 4", "More than 4"],
+    ["anos no mercado", "years in the industry"],
+    ["Antes de começarmos", "Before we get started"],
+    ["Quais tipos de projeto você desenvolve?", "What types of projects do you work on?"],
+    ["Landing pages, sites institucionais, sites no formato Link da Bio, identidades visuais e criativos.", "Landing pages, company websites, link-in-bio pages, visual identities, and social media graphics."],
+    ["Quanto custa criar um site?", "How much does a website cost?"],
+    ["O valor depende do tipo de site, do número de páginas e das funcionalidades. Depois de entender seu projeto, preparo uma proposta com o valor e o que está incluído.", "Pricing depends on the type of site, the number of pages, and the features you need. Once I understand your project, I’ll send a proposal with the price and what’s included."],
+    ["Quanto tempo leva para desenvolver um projeto?", "How long does a project take?"],
+    ["Depende do escopo. Depois do briefing e do diagnóstico, informo o prazo do seu projeto.", "It depends on the scope. After the initial brief and discovery, I’ll give you a timeline for your project."],
+    ["Preciso contratar domínio e hospedagem?", "Do I need a domain and hosting?"],
+    ["Para publicar um site em um endereço próprio, você precisa de um domínio e de hospedagem. Se já tem algum deles, verifico o que pode ser aproveitado e oriento você na configuração.", "To publish a website at your own address, you’ll need a domain and hosting. If you already have either, I’ll check what you can keep and help you with the setup."],
+    ["Como posso solicitar um projeto?", "How do I start a project?"],
+    ["Clique em “Fazer meu orçamento” para falar comigo pelo WhatsApp. Se preferir, também estou no Instagram.", "Click “Get my quote” to reach me on WhatsApp. You can also contact me on Instagram."],
+    ["Ficou com dúvidas? me chame.", "Still have questions? Get in touch."],
+    ["Uma mensagem do Lucas", "A message from Lucas"],
+    ["Tem alguma pergunta?", "Have a question?"],
+    ["Me conte o que você tem em mente para o seu site. Eu te ajudo a entender quais opções fazem sentido para o seu projeto e por onde começar.", "Tell me what you have in mind for your website. I’ll help you work out which options make sense and where to start."],
+    ["Vamos transformar seu site na sua melhor ferramenta de vendas?", "Ready to turn your website into your best sales tool?"],
+    ["Me conte sobre o seu negócio e eu mostro o caminho mais direto para o seu projeto.", "Tell me about your business, and I’ll show you the most direct way to get your project started."],
+    ["Vamos conversar", "Let’s talk"],
+    ["Amorim, voltar ao início", "Amorim, return to the homepage"],
+    ["Navegação do rodapé", "Footer navigation"],
+    ["Navegação", "Navigation"],
+    ["Contato", "Contact"],
+    ["Voltar ao topo", "Back to top"],
+    ["Política de privacidade", "Privacy policy"],
+    ["Este site apresenta meu portfólio. Quando você me escreve pelo WhatsApp, uso as informações que você envia para responder e conversar sobre o seu projeto.", "This website showcases my portfolio. When you contact me on WhatsApp, I use the information you share to respond and discuss your project."],
+    ["A página pode carregar fontes do Google Fonts. Os links para WhatsApp, Instagram e Behance abrem serviços com suas próprias políticas de privacidade.", "This page may load fonts from Google Fonts. Links to WhatsApp, Instagram, and Behance open services with their own privacy policies."],
+    ["Para falar sobre seus dados,", "For questions about your data,"],
+    ["me chame no WhatsApp", "contact me on WhatsApp"],
+    ["Desenvolvido por Amorim Designer, Instagram", "Built by Amorim Designer, Instagram"],
+    ["Desenvolvido por", "Built by"],
+    ["Conversar no WhatsApp", "Chat on WhatsApp"],
+    ["Olá, Amorim. Gostaria de falar sobre um projeto", "Hi Amorim, I’d like to discuss a project."],
+    ["Olá, Amorim. Quero meus criativos para redes sociais", "Hi Amorim, I’d like social media graphics."],
+    ["Olá, Amorim. Quero um site institucional", "Hi Amorim, I’d like a company website."],
+    ["Olá, Amorim. Quero uma landing page", "Hi Amorim, I’d like a landing page."],
+    ["Olá, Amorim. Tenho uma dúvida sobre a política de privacidade do site.", "Hi Amorim, I have a question about the website’s privacy policy."]
+  ]);
+  const portuguese = new Map(Array.from(english, ([from, to]) => [to, from]));
+  const root = document.documentElement;
+  const selector = document.querySelector('.language-switch');
+  const storageKey = 'amorim-site-language';
+
+  function translate(value, language){
+    return (language === 'en' ? english : portuguese).get(value) ?? value;
+  }
+
+  function selectLanguage(language){
+    root.lang = language;
+    document.title = translate(document.title, language);
+    const description = document.querySelector('meta[name="description"]');
+    description.content = translate(description.content, language);
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        return node.parentElement.closest('script,style')
+          ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      const trimmed = node.data.trim();
+      const localized = translate(trimmed, language);
+      if (localized !== trimmed) {
+        const start = node.data.indexOf(trimmed);
+        node.data = node.data.slice(0,start) + localized + node.data.slice(start + trimmed.length);
+      }
+    }
+    for (const el of document.querySelectorAll('[alt],[aria-label]')) {
+      for (const attribute of ['alt','aria-label']) {
+        const current = el.getAttribute(attribute);
+        if (current === null) continue;
+        const localized = translate(current, language);
+        if (localized !== current) el.setAttribute(attribute, localized);
+      }
+    }
+    for (const link of document.querySelectorAll('a[href^="https://wa.me/"]')) {
+      const href = link.getAttribute('href');
+      const message = new URL(href).searchParams.get('text');
+      if (!message) continue;
+      const localized = translate(message, language);
+      if (localized !== message) {
+        link.setAttribute('href', href.replace(/([?&]text=)[^&]*/, (match, key) => key + encodeURIComponent(localized)));
+      }
+    }
+    for (const button of selector.querySelectorAll('button')) {
+      button.setAttribute('aria-pressed', String(button.dataset.language === language));
+    }
+  }
+
+  selector.addEventListener('click', event => {
+    const button = event.target.closest('button[data-language]');
+    if (!button || button.dataset.language === root.lang) return;
+    selectLanguage(button.dataset.language);
+    try { localStorage.setItem(storageKey, root.lang); } catch {}
+  });
+
+  try {
+    if (localStorage.getItem(storageKey) === 'en') selectLanguage('en');
+  } catch {}
+  selector.hidden = false;
+
+  return value => translate(value, root.lang);
+})();
+</script>
+<script>
 (function(){var b=document.getElementById('bg'),m=document.getElementById('mn');
-function t(o){m.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Fechar menu':'Abrir menu')}
+function t(o){m.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',siteText(o?'Fechar menu':'Abrir menu'))}
 b.addEventListener('click',function(){t(!m.classList.contains('open'))});
 m.addEventListener('click',function(e){if(e.target.closest('a'))t(false)});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')t(false)});
@@ -2407,7 +2638,7 @@ document.querySelectorAll('.project-carousel').forEach((viewport, index) => {
     if (opening || !loader.isConnected) return;
     opening = true;
     loader.classList.add('is-loaded');
-    status.textContent = 'Site carregado.';
+    status.textContent = siteText('Site carregado.');
     if (reduced.matches) {
       setTimeout(session.release, 160);
       return;
